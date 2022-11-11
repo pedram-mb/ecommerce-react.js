@@ -16,6 +16,7 @@ const Products = () => {
     <>
     <h5 className="container mt-5">products : </h5>
       <div className="d-flex container mt-3">
+        <h2>sssssssss</h2>
         {products.map(product => (
           <div key={product.id} className="card shadow  mb-3 p-1" style={{maxWidth: "18rem;"}}>
             <img src={product.image} className="card-img-top" alt="..."></img>
