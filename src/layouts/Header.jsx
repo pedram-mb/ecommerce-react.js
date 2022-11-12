@@ -19,8 +19,10 @@ const Header = ()=>{
                 </ul>
                 <ul className="d-flex">
                     <li>
-                        <span className="badge bg-secondary">0</span>
-                        <i className="bi bi-cart3"></i>
+                        <NavLink to="/shoping">
+                            <span className={(active)=> active.isActive ? "badge bg-secondary active" : "badge bg-secondary"}>0</span>
+                            <i className="bi bi-cart3"></i>
+                        </NavLink>
                     </li>
                 </ul>
                 </div>
