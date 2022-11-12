@@ -1,24 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { AddToCart } from "../redux/cart/CartAction";
 import { GetProducts } from "../redux/products/ProductsAction";
 
 const Products = () => {
   const { products } = useSelector((state => state.products));
+  const { cart } = useSelector((state => state.shopingCart));
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(GetProducts());
   }, [dispatch]);
-  console.log(products);
+  // console.log(products);
+
+  const HandleAddToCart = (product)=>{
+    dispatch(AddToCart(product))
+  }
+  console.log(cart);
 
   return (
     <>
     <h5 className="container mt-5">products : </h5>
       <div className="d-flex container mt-3">
-        <h2>sssssssss</h2>
         {products.map(product => (
-          <div key={product.id} className="card shadow  mb-3 p-1" style={{maxWidth: "18rem;"}}>
+          <div key={product.id} className="card mb-3 p-1" style={{maxWidth: "18rem;"}}>
             <img src={product.image} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">{product.name}</h5>
@@ -26,8 +31,8 @@ const Products = () => {
                 {product.discription}
               </p>
             </div>
-            <div className="card-footer bg-transparent border-success">{product.price}$</div>
-            <Link className="btn btn-primary">bay</Link>
+            <div className="card-footer bg-transparent border-dark">{product.price}$</div>
+            <button onClick={()=> HandleAddToCart(product)} className="btn btn-primary">bay</button>
           </div>
         ))}
       </div>
