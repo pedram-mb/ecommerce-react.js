@@ -5,7 +5,6 @@ import { GetProducts } from "../redux/products/ProductsAction";
 
 const Products = () => {
   const { products } = useSelector((state => state.products));
-  const { cart } = useSelector((state => state.shopingCart));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +15,6 @@ const Products = () => {
   const HandleAddToCart = (product)=>{
     dispatch(AddToCart(product))
   }
-  console.log(cart);
 
   return (
     <>
@@ -31,8 +29,12 @@ const Products = () => {
                 {product.discription}
               </p>
             </div>
-            <div className="card-footer bg-transparent border-dark">{product.price}$</div>
-            <button onClick={()=> HandleAddToCart(product)} className="btn btn-primary">bay</button>
+              <div className="card-footer bg-transparent border-dark">
+                <span>
+                  {product.price}$
+                </span>
+                <button onClick={()=> HandleAddToCart(product)} className="btn btn-primary">add to cart</button>
+              </div>
           </div>
         ))}
       </div>

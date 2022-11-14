@@ -1,16 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Increment } from "../redux/cart/CartAction";
 
 const ShopingCart = () => {
-  const { cart } = useSelector((state) => state.shopingCart);
+  const {cart} = useSelector((state => state.ShopingCart))
+  const dispatch = useDispatch()
 
-  // console.log(cart);
+  const HandleIncremrnt = (productId)=>{
+    dispatch(Increment(productId))
+  }
+
+  console.log(cart);
   return (
     <div className="container">
-      <table class="table mt-5">
+      <table className="table mt-5">
         <thead>
           <tr>
             <th scope="col">product</th>
-            
+            <th>info</th>
             <th scope="col">price</th>
             <th scope="col">quantity</th>
             <th scope="col">subtotal</th>
@@ -20,24 +26,21 @@ const ShopingCart = () => {
         <tbody>
           {cart.map((shoping) => (
             <tr key={shoping.id} className="">
-              <td className="col-6">
-                <div className="col-1">
-                    {shoping.image}
-                </div>
-                <div className="col-5">
+              <td className="col-1">
+                    <img style={{height : "80px" , width : "80px"}} src={shoping.image} alt="" />                
+              </td>
+              <td className="col-5">
                     {shoping.name}
+                    <br />
                     {shoping.discription}
-                </div>
               </td>
               <td className="col-1">{shoping.price}</td>
               <td className="col-2">
-                <span>
                   <i className="bi bi-patch-minus"></i>
-                </span>
                 {shoping.quantity}
-                <span>
-                  <i className="bi bi-patch-plus"></i>
-                </span>
+                <button onClick={()=> HandleIncremrnt(shoping.id)}>
+                  <i  className="bi bi-patch-plus"></i>
+                </button>
               </td>
               <td className="col-1">
                 {shoping.price * shoping.quantity}

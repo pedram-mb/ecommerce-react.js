@@ -1,1 +1,3 @@
-export const ADD_TO_CART = "ADD_TO_CART";
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const INCEREMENT_CART = 'INCEREMENT_CART';
+export const DECEREMENT_CART = 'DECEREMENT_CART';
