@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Increment } from "../redux/cart/CartAction";
+import Swal from "sweetalert2";
+import { Decrement, Increment } from "../redux/cart/CartAction";
 
 const ShopingCart = () => {
   const {cart} = useSelector((state => state.ShopingCart))
@@ -7,6 +8,24 @@ const ShopingCart = () => {
 
   const HandleIncremrnt = (productId)=>{
     dispatch(Increment(productId))
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
+  const HandleDcrement = (productId)=>{
+    dispatch(Decrement(productId))
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   console.log(cart);
@@ -36,11 +55,9 @@ const ShopingCart = () => {
               </td>
               <td className="col-1">{shoping.price}</td>
               <td className="col-2">
-                  <i className="bi bi-patch-minus"></i>
+                  <i onClick={()=> HandleDcrement(shoping.id)} className="bi bi-patch-minus"></i>
                 {shoping.quantity}
-                <button onClick={()=> HandleIncremrnt(shoping.id)}>
-                  <i  className="bi bi-patch-plus"></i>
-                </button>
+                  <i onClick={()=> HandleIncremrnt(shoping.id)} className="bi bi-patch-plus"></i>
               </td>
               <td className="col-1">
                 {shoping.price * shoping.quantity}

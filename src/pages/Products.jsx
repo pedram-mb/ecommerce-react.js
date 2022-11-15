@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import { AddToCart } from "../redux/cart/CartAction";
 import { GetProducts } from "../redux/products/ProductsAction";
 
@@ -14,6 +15,13 @@ const Products = () => {
 
   const HandleAddToCart = (product)=>{
     dispatch(AddToCart(product))
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   return (
