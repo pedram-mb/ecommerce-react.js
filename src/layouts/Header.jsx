@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import './header.css';
 
 const Header = ()=>{
+
+    const {cart} = useSelector((state => state.ShopingCart))
+
     return(
         <nav className="navbar navbar-expand-lg bg-light p-3">
             <div className="container-fluid">
@@ -19,9 +23,11 @@ const Header = ()=>{
                 </ul>
                 <ul className="d-flex">
                     <li>
+                        <span className="badge bg-secondary">{cart.length}</span>
                         <NavLink to="/shoping">
-                            <span className={(active)=> active.isActive ? "badge bg-secondary active" : "badge bg-secondary"}>0</span>
-                            <i className="bi bi-cart3"></i>
+                            <span className={(active)=> active.isActive ? "active" : ""}>
+                                <i className="bi bi-cart3"></i>
+                            </span>
                         </NavLink>
                     </li>
                 </ul>

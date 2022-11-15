@@ -1,3 +1,5 @@
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const INCEREMENT_CART = 'INCEREMENT_CART';
 export const DECEREMENT_CART = 'DECEREMENT_CART';
+export const REMOVE_FROM_LIST = 'REMOVE_FROM_LIST'; 
+export const CLEAR_FROM_CART = 'CLEAR_FROM_CART';

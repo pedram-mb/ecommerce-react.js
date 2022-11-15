@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DECEREMENT_CART, INCEREMENT_CART } from './CartActionType';
+import { ADD_TO_CART, CLEAR_FROM_CART, DECEREMENT_CART, INCEREMENT_CART, REMOVE_FROM_LIST } from './CartActionType';
 
 const initialState = {
     cart : []
@@ -21,6 +21,16 @@ const CartReducer = (state = initialState , action) =>{
             let product = state.cart.find(p => p.id === action.payload)
             state.cart = product.quantity > 1 ? state.cart.map(p => p.id === action.payload ? {...p , quantity : p.quantity - 1 } : p) : state.cart;
             return {...state , cart : state.cart}
+
+        case REMOVE_FROM_LIST:
+            state.cart = state.cart.filter(p => p.id !== action.payload)
+            return {...state , cart : state.cart}
+
+        case CLEAR_FROM_CART:
+            return{
+                ...state , cart : []
+            }
+
         default:
             return state
     }
