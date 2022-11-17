@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { AddToCart } from "../redux/cart/CartAction";
 import { GetProducts } from "../redux/products/ProductsAction";
+import "./product.scss";
 
 const Products = () => {
   const { products } = useSelector((state => state.products));
@@ -27,7 +28,7 @@ const Products = () => {
   return (
     <>
     <h5 className="container mt-5">products : </h5>
-      <div className="d-flex container mt-3">
+      <div className="container mt-3 product">
         {products.map(product => (
           <div key={product.id} className="card mb-3 p-1" style={{maxWidth: "18rem;"}}>
             <img src={product.image} className="card-img-top" alt="..."></img>
