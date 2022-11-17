@@ -57,7 +57,7 @@ const ShopingCart = () => {
       <div className="container">
         <table className="table mt-5">
           <thead>
-            <tr>
+            <tr className="">
               <th scope="col">product</th>
               <th>info</th>
               <th scope="col">price</th>
@@ -68,7 +68,7 @@ const ShopingCart = () => {
           </thead>
           <tbody>
             {cart.map((shoping) => (
-              <tr key={shoping.id} className="">
+              <tr className="" key={shoping.id}>
                 <td className="col-1">
                       <img style={{height : "80px" , width : "80px"}} src={shoping.image} alt="" />                
                 </td>
